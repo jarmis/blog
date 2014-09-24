@@ -1,0 +1,41 @@
+
+
+<% if signed_in? %>
+    <div class="row">
+      <aside class="span4">
+        <section>
+          <%= render 'shared/user_info' %>
+        </section>
+        <section>
+          <%= render 'shared/stats' %>
+        </section>
+        <section>
+          <%= render 'shared/micropost_form' %>
+        </section>
+      </aside>
+      <div class="span8">
+        <h3>Micropost Feed</h3>
+        <%= render 'shared/feed' %>
+      </div>
+    </div>
+<% else %>
+  <div class="hero-unit">
+    <h2>Most liked posts:</h2>
+      <ol class="microposts">
+        <% @posts.each do |posts| %>
+          <li id="<%= posts.micropost_id %>">
+            <%= link_to gravatar_for(posts.micropost.user), posts.micropost.user %>
+            <span class="user">
+              <%= link_to posts.micropost.user.name, posts.micropost.user %>
+            </span>
+            <span class="content"><%= posts.micropost.content %></span>
+            <span class="timestamp">
+              Posted <%= time_ago_in_words(posts.micropost.created_at) %> ago.
+            </span>
+            <span class="timestamp">Likes: <%= posts.total  %></span>
+          </li>
+       <% end %>
+
+     </ol>
+  </div>
+<% end %>

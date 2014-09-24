@@ -1,0 +1,14 @@
+
+  <strong>Dragon:</strong>
+<p>
+ Name : <%= @dragon.name %></br>
+ Sleeping?? : <%= @sleep %></br>
+ <%= @hungry %></br>
+ <%= @poopy %></br></br>
+ <%= @dragon.stuffinbelly %><%= @dragon.stuffinintestine %></br>
+ <%= @dead %></br>
+ <%= link_to 'Feed', dragon_feed_path(@dragon) %>
+ <%= link_to 'Walk', dragon_walk_path(@dragon) %>
+ <%= link_to 'But to bed', dragon_puttobed_path(@dragon) %>
+</p>
+

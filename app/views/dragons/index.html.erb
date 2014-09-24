@@ -1,0 +1,25 @@
+<h1>Dragon</h1>
+<%= link_to 'Get a new dragons', new_dragon_path %>
+
+<table>
+  <tr>
+    <th>Dragons name</th>
+    <th>Is he/she sleeping</th>
+  </tr>
+
+  <% @dragons.each do |dragon| %>
+      <tr>
+        <td><%= dragon.name %></td>
+        <td><%= dragon.sleep %></td>
+        <td><%= link_to 'Play', dragon_path(dragon) %></td>
+        <td><%= link_to 'Kill', dragon_path(dragon),
+                        method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+
+
+
+
+
+

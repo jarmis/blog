@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Jarmo Ruby on Rails" %></title>
+    <%= stylesheet_link_tag "application", media: "all",
+                            "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tag %>
+    <%= javascript_include_tag 'event_calendar' %>
+    <%= yield(:head) %>
+  </head>
+
+
+  <body>
+
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "Jarmo ruby", root_path, id: "logo" %>
+        <nav>
+          <ul class="nav pull-right">
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to 'Sünnipäeva arvutaja', controller: 'synnipaev' %></li>
+            <li><%= link_to 'mäng: Dragon', controller: 'dragons' %></li>
+            <li><%= link_to "Help", help_path %></li>
+            <li><%= link_to "Search", microposts_path %></li>
+
+            <% if signed_in? %>
+                <% if is_admin? %>
+                    <li><%= link_to "admin", admin_index_path %></li>
+                <% end %>
+                <li><%= link_to "Users", users_path %></li>
+                <li id="fat-menu" class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Account <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Profile", current_user %></li>
+                    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                    <li class="divider"></li>
+                    <li>
+                      <%= link_to "Sign out", signout_path, method: "delete" %>
+                    </li>
+                  </ul>
+                </li>
+            <% else %>
+                <li><%= link_to "Sign in", signin_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+
+  <div class="container">
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    <%= yield %>
+
+
+    <footer class="footer">
+      <small>
+        footer
+      </small>
+      <nav>
+        <ul>
+          footer
+        </ul>
+      </nav>
+    </footer>
+
+  </div>
+
+
+
+  <%= debug(params) if Rails.env.development? %>
+
+  </body>
+</html>

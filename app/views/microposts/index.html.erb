@@ -1,0 +1,17 @@
+<div class="hero-unit">
+  <%= form_tag microposts_path, :method => 'get', :id => "products_search" do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+
+  <% end %>
+
+  <h2>Search result for "<%= params[:search] %>"</h2>
+  <ol class="microposts">
+
+    <%= render @search %>
+    <%= will_paginate @search %>
+
+  </ol>
+</div>

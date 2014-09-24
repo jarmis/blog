@@ -1,0 +1,36 @@
+<% provide(:title, 'Admin') %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for current_user %>
+        <%= current_user.name %>
+      </h1>
+    </section>
+    <section>
+      <%= render 'admin/menu' %>
+    </section>
+  </aside>
+  <div class="span8">
+
+    <section>
+    <%= form_for(:user, url: make_admin_new_admin_path) do |f| %>
+        <p>
+          <%= f.collection_select(:id, @notadmins, :id, :name) %>
+          <%= submit_tag t('admins.add_admins'), :name => nil %>
+        </p>
+    <% end %>
+    </section>
+    <section>
+      <h3>Admins:</h3>
+      <ul class="users">
+        <%= render User.where(admin: 't') %>
+      </ul>
+
+    </section>
+  </div>
+</div>
+
+
+
+

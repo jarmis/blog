@@ -1,0 +1,16 @@
+<h1>SÜNNIPÄEVA ARVUTAJA</h1>
+<%= form_tag synnipaev_index_path, :method => 'get' do %>
+    <p>
+        Sisesta oma sünnipäev:</br>
+      <%= date_select "user", "birthday", :start_year => 1910, :end_year => Date.today.year,
+                      :use_month_numbers => true, :default =>{:year => @date.year, :month => @date.month, :day => @date.day}  %>
+      <%= submit_tag "Arvuta", :name => nil %>
+    </p>
+<% end %>
+Vanus: <%= @vanus  %></br>
+Päevi jäänud sünnipäevani: <%= @timeleft  %>
+</br></br>
+<%= link_to 'Tagasi', root_path %>
+
+
+

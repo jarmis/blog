@@ -1,0 +1,2 @@
+module SynnipaevHelper
+end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  asleep: 2014-07-17 13:40:57
+  stuffinbelly: 1
+  stuffinintestine: 1
+
+two:
+  name: MyString
+  asleep: 2014-07-17 13:40:57
+  stuffinbelly: 1
+  stuffinintestine: 1
